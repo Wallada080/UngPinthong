@@ -109,7 +109,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var fromARGB;
+    
     return Scaffold(
       body: SafeArea(
         child: Container(
