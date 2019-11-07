@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
 
   Widget showAppName() {
     return Text(
-      'Ung Pinthong',
+      'Living And Facilities Co.,Ltd.',
       style: TextStyle(
         fontSize: MyStyle().h1,
         fontWeight: FontWeight.bold,
