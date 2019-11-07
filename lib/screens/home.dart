@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
 
           //Create  Route Arrow Back
           MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context){return Register()});
+          MaterialPageRoute(builder: (BuildContext context){return Register();});
           Navigator.of(context).push(materialPageRoute);
 
 
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
           child: Center(
             child: Container(
               padding: MyStyle().myPadding,
-              color: Color.fromARGB,(50, 0 , 0, 0),
+              color: Color.fromARGB( 50, 0 , 0, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
