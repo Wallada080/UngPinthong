@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:ungpinthong/screens/register.dart';
 import 'package:ungpinthong/utility/my_style.dart';
@@ -9,6 +11,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // Field
+  final formKey GlobalKey<FormState>();
+  String user,password;
 
   // Method
 
@@ -21,9 +25,25 @@ class _HomeState extends State<Home> {
           'Sign In',
           style: MyStyle().myWhiteTextStyle,
         ),
-        onPressed: () {},
+        onPressed: () {
+          formKey.currentState.save();
+          print('user =$user,password = $password');
+          checkAuthen();
+
+          },
       ),
     );
+  }
+  Future<Void> checkAuthen()async{
+
+    if ((user.isEmpty) || (password.isEmpty)) {
+      // have space
+    } else {
+
+      // no space
+
+    }
+
   }
 
   Widget signUpButton() {
@@ -71,7 +91,19 @@ class _HomeState extends State<Home> {
     return Container(
       width: 250.0,
       child: TextFormField(
-        decoration: InputDecoration(labelText: 'User :'),
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: MyStyle().textColor),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          labelText: 'User :',
+          labelStyle: TextStyle(color: Colors.white),
+        ),onSaved: (value){
+          user = value.trim();
+        },
       ),
     );
   }
@@ -80,16 +112,23 @@ class _HomeState extends State<Home> {
     return Container(
       width: 250.0,
       child: TextFormField(
+        style: TextStyle(color: Colors.white),
         obscureText: true,
-        decoration: InputDecoration(labelText: 'Password :'),
-      ),
+        decoration: InputDecoration(
+          enabledBorder: 
+          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          labelText: 'Password :',labelStyle: TextStyle(color: Colors.white)
+      ),onSaved: (value){
+        password = value.trim();
+      }
+      );
     );
   }
 
   Widget showLogo() {
     return Container(
-      width: 120.0,
-      height: 120.0,
+      width: 100.0,
+      height: 100.0,
       child: Image.asset('images/logo.png'),
     );
   }
@@ -122,19 +161,21 @@ class _HomeState extends State<Home> {
           child: Center(
             child: Container(
               padding: MyStyle().myPadding,
-              color: Color.fromARGB( 50, 0 , 0, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  showLogo(),
-                  showAppName(),
-                  userText(),
-                  passwordText(),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  showButton(),
-                ],
+              color: Color.fromARGB( 100, 0 , 0, 0),
+              child: Form(key: formKey),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    showLogo(),
+                    showAppName(),
+                    userText(),
+                    passwordText(),
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    showButton(),
+                  ],
+                ),
               ),
             ),
           ),

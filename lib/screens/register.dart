@@ -167,7 +167,7 @@ class _RegisterState extends State<Register> {
                   nameText(),
                   usertext(),
                   passwordtext(),
-                          ],);
+                          ]);
         var container = container2;
         return Scaffold(
           appBar: AppBar(
