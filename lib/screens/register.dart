@@ -18,94 +18,101 @@ class _RegisterState extends State<Register> {
 
 
   //method
-  Widget passwordtext() {
-    return Container(margin: EdgeInsets.only(left: 30.0,right: 30.0),
+
+  Widget passwordText() {
+    return Container(
+      margin: EdgeInsets.only(left: 30.0, right: 30.0),
       child: TextFormField(
         decoration: InputDecoration(
           icon: Icon(
-            Icons.lock,      
-        size: 36.0,
-        color: Colors.orange,
+            Icons.lock,
+            size: 36.0,
+            color: Colors.orange,
+          ),
+          labelText: 'Password :',
+          labelStyle: TextStyle(
+            color: Colors.orange,
+          ),
+          helperText: 'Type Your Password in Blank',
+          helperStyle: TextStyle(color: Colors.orange),
+          hintText: 'More 6 Charactor',
         ),
-        labelText: 'Password :',
-        labelStyle: TextStyle(
-          color:Colors.purple,
-        ),helperText:  'Type Your First Name in Blank',
-        helperStyle: TextStyle(color: Colors.purple),
-        hintText: 'English Only'
-        ), validator: (String value){
-          if (value.isEmpty) {
-            return'Please fill Name in the Blank';
-            
-          } else {
-            return null;
-            
-          }
-          onSaved: (value){
-            password = value.trim();
-        },
-      );
-   );
-    
-    
-  }
-
-  Widget usertext() {
-    var icons;
-    return Container(margin: EdgeInsets.only(left: 30.0,right: 30.0),
-      child: TextFormField(keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          icon: Icon(Icons.face,
-        size: 36.0,
-        color: Colors.purple,
-        ),
-        labelText: 'Display Name :',
-        labelStyle: TextStyle(
-          color:Colors.purple,
-        ),
-        helperText:  'Type Your First Name in Blank',
-        helperStyle: TextStyle(
-          color: Colors.purple),
-        hintText: 'you@mail.com',
-        ),validator: (String value){
-          if (value.isEmpty) {
-            return 'กรุณากรอก User ด้วยค่ะ';
-         } else if (((value.contains('@'))&&(value.contains('.'))) {
-           return 'กรุณากรอก you@mail.com ด้วยค่ะ';
-         }else{
-            return null;
-          }
-          onSaved: (value){
-          user = value.trim();
-        },
-    )
-         },
-  }
-
-  Widget nameText() {
-    var icons;
-    return Container(margin: EdgeInsets.only(left: 30.0,right: 30.0),
-      child: TextFormField(
-        decoration: InputDecoration(icon: Icon(Icons.face,
-        size: 36.0,
-        color: Colors.purple,
-        ),
-        labelText: 'Display Name :',
-        labelStyle: TextStyle(
-          color:Colors.purple,
-        ),helperText:  'Type Your First Name in Blank',
-        helperStyle: TextStyle(color: Colors.purple),
-        hintText: 'English Only',
-        ),validator: (value){
-          if (value.length <6) {
+        validator: (value) {
+          if (value.length < 6) {
             return 'Password More 6 Charactor';
           } else {
             return null;
           }
         },onSaved: (value){
+          password = value.trim();
+        },
+      ),
+    );
+  }
+
+  Widget userText() {
+    return Container(
+      margin: EdgeInsets.only(left: 30.0, right: 30.0),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          icon: Icon(
+            Icons.account_box,
+            size: 36.0,
+            color: Colors.green,
+          ),
+          labelText: 'User :',
+          labelStyle: TextStyle(
+            color: Colors.green,
+          ),
+          helperText: 'Type Your User in Blank',
+          helperStyle: TextStyle(color: Colors.green),
+          hintText: 'you@email.com',
+        ),
+        validator: (String value) {
+          if (value.isEmpty) {
+            return 'กรุณากรอก User ด้วย คะ';
+          } else if (!((value.contains('@')) && (value.contains('.')))) {
+            return 'Please Keep Email Format => you@email.com';
+          } else {
+            return null;
+          }
+        },onSaved: (value){
+          user = value.trim();
+        },
+      ),
+    );
+  }
+
+  Widget nameText() {
+    return Container(
+      margin: EdgeInsets.only(left: 30.0, right: 30.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          icon: Icon(
+            Icons.face,
+            size: 36.0,
+            color: Colors.purple,
+          ),
+          labelText: 'Display Name :',
+          labelStyle: TextStyle(
+            color: Colors.purple,
+          ),
+          helperText: 'Type Your First Name in Blank',
+          helperStyle: TextStyle(color: Colors.purple),
+          hintText: 'English Only',
+        ),
+        validator: (String value) {
+          if (value.isEmpty) {
+            return 'Please Fill Name in the Blank';
+          } else {
+            return null;
+          }
+        },onSaved: (value){
           name = value.trim();
-        }
-    ),
+        },
+      ),
+    );
   }
 
   Widget showCurrentDate() {
@@ -150,35 +157,38 @@ class _RegisterState extends State<Register> {
     } else {
     }
   }
-
-  @override
+@override
   Widget build(BuildContext context) {
-    var container2 = Container(
-                decoration: BoxDecoration(
-                  gradient: :LinearGradient(
-                    color: [Colors:while,Mystye()mainColor  ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                     ),
-                ),
-                padding: EdgeInsets.all(30,0),
-                child: <Widget>[
-                  showCurrentDate(),SizedBox(height: 20.0,),
-                  nameText(),
-                  usertext(),
-                  passwordtext(),
-                          ]);
-        var container = container2;
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: MyStyle().textColor,
-            title: Text('Register'),
-            actions: <Widget>[registerButton()],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MyStyle().textColor,
+        title: Text('Register'),
+        actions: <Widget>[registerButton()],
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.white, MyStyle().mainColor],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-    
-          body: container,
-              );
-            }
-          
-          passwordtext() {
+        ),
+        child: Form(
+          key: formKey,
+          child: ListView(
+            padding: EdgeInsets.all(30.0),
+            children: <Widget>[
+              showCurrentDate(),
+              SizedBox(
+                height: 20.0,
+              ),
+              nameText(),
+              userText(),
+              passwordText(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

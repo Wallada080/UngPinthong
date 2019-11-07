@@ -29,7 +29,7 @@ Future<void> normalDialog(
         return AlertDialog(
           title: showTitle(title),
           content: Text(message),
-          actions: <Widget>[okButton()],
+          actions: <Widget>[okButton(context)],
         );
       });
 }

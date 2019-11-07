@@ -1,7 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:ungpinthong/screens/register.dart';
+import 'package:ungpinthong/utility/my_alert.dart';
 import 'package:ungpinthong/utility/my_style.dart';
 
 class Home extends StatefulWidget {
@@ -11,8 +10,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // Field
-  final formKey GlobalKey<FormState>();
-  String user,password;
+  final formKey = GlobalKey<FormState>();
+  String user, password;
 
   // Method
 
@@ -27,21 +26,21 @@ class _HomeState extends State<Home> {
         ),
         onPressed: () {
           formKey.currentState.save();
-          print('user =$user,password = $password');
+          print('user = $user, password = $password');
           checkAuthen();
-
-          },
+        },
       ),
     );
   }
-  Future<Void> checkAuthen()async{
+
+  Future<void> checkAuthen()async{
 
     if ((user.isEmpty) || (password.isEmpty)) {
-      // have space
+      // Have Space
+      normalDialog(context, 'Have Space', 'Please Fill All Every Blank');
     } else {
-
-      // no space
-
+      // No Space
+      
     }
 
   }
@@ -56,16 +55,14 @@ class _HomeState extends State<Home> {
           style: TextStyle(color: MyStyle().textColor),
         ),
         onPressed: () {
-          print('You Click SignUP');
+          print('You Click SignUp');
 
-
-          //Create  Route Arrow Back
+          // Create Route Arrow Back
           MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context){return Register();});
+              MaterialPageRoute(builder: (BuildContext context) {
+            return Register();
+          });
           Navigator.of(context).push(materialPageRoute);
-
-
-
         },
       ),
     );
@@ -101,7 +98,8 @@ class _HomeState extends State<Home> {
           ),
           labelText: 'User :',
           labelStyle: TextStyle(color: Colors.white),
-        ),onSaved: (value){
+        ),
+        onSaved: (value) {
           user = value.trim();
         },
       ),
@@ -115,19 +113,20 @@ class _HomeState extends State<Home> {
         style: TextStyle(color: Colors.white),
         obscureText: true,
         decoration: InputDecoration(
-          enabledBorder: 
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-          labelText: 'Password :',labelStyle: TextStyle(color: Colors.white)
-      ),onSaved: (value){
-        password = value.trim();
-      }
-      );
+          enabledBorder:
+              UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          labelText: 'Password :',
+          labelStyle: TextStyle(color: Colors.white),
+        ),onSaved: (value){
+          password = value.trim();
+        },
+      ),
     );
   }
 
   Widget showLogo() {
     return Container(
-      width: 100.0,
+      width: 120.0,
       height: 100.0,
       child: Image.asset('images/logo.png'),
     );
@@ -148,7 +147,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -161,8 +159,9 @@ class _HomeState extends State<Home> {
           child: Center(
             child: Container(
               padding: MyStyle().myPadding,
-              color: Color.fromARGB( 100, 0 , 0, 0),
-              child: Form(key: formKey),
+              color: Color.fromARGB(100, 0, 0, 0),
+              child: Form(
+                key: formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
