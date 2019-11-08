@@ -71,7 +71,7 @@ class _RegisterState extends State<Register> {
         ),
         validator: (String value) {
           if (value.isEmpty) {
-            return 'กรุณากรอก User ด้วย คะ';
+            return 'กรุณากรอก User ด้วย ค่ะ';
           } else if (!((value.contains('@')) && (value.contains('.')))) {
             return 'Please Keep Email Format => you@email.com';
           } else {

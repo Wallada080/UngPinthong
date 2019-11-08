@@ -60,9 +60,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: YeonSung
+    - family: McLaren
       fonts:
-        - asset: fonts/YeonSung-Regular.ttf
+        - asset: fonts/McLaren-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
