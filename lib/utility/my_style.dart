@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyStyle {
   double h1 = 13.0, h2 = 18.0;
   Color textColor = Colors.red[50];
-  Color mainColor = Colors.orange[200];
+  Color mainColor = Colors.orange[900];
   String nameFont = 'McLaren';
   String nameApp = 'Ung Pinthong';
 
